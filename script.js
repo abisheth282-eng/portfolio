@@ -317,12 +317,15 @@ WATCH NOW
 const modal = document.querySelector(".video-modal");
 const video = document.getElementById("fullscreenVideo");
 const closeBtn = document.querySelector(".close-video");
+const videoWrapper = document.querySelector(".video-wrapper");
 
 const watchButtons = document.querySelectorAll(".watch-btn");
 
 watchButtons.forEach(btn=>{
     btn.addEventListener("click",()=>{
         const src = btn.dataset.video;
+
+        if(!src) return;
 
         video.pause();
         video.src = src;
@@ -331,6 +334,13 @@ watchButtons.forEach(btn=>{
         modal.style.display="flex";
         video.play();
     });
+});
+
+video.addEventListener("loadedmetadata",()=>{
+    videoWrapper.classList.toggle(
+        "landscape",
+        video.videoWidth > video.videoHeight
+    );
 });
 
 closeBtn.addEventListener("click",closeVideo);
