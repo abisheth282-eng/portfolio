@@ -2273,6 +2273,27 @@ font-family: "Milker";
 
 }
 
+.contact-info small{
+    display:block;
+    margin:-8px 0 10px;
+    color:#d8cfcf;
+    font-family:"Manrope", Arial, sans-serif;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:1.5px;
+}
+
+.contact-info a{
+    display:block;
+    width:max-content;
+    color:inherit;
+    text-decoration:none;
+}
+
+.contact-info a:hover h3{
+    filter:drop-shadow(0 0 14px rgba(245,186,8,.55));
+}
+
 .contact-info h3{
 
     font-size:22px;
@@ -2812,6 +2833,10 @@ RESPONSIVE
     .contact-info h3{
         font-size:clamp(18px, 5vw, 24px);
         letter-spacing:1px;
+    }
+
+    .contact-info a{
+        margin-inline:auto;
     }
 
     .contact-right{
