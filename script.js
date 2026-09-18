@@ -333,6 +333,13 @@ const video = document.getElementById("fullscreenVideo");
 const closeBtn = document.querySelector(".close-video");
 const videoWrapper = document.querySelector(".video-wrapper");
 
+function enableModalAudio(){
+    video.muted = false;
+    video.defaultMuted = false;
+    video.removeAttribute("muted");
+    video.volume = 1;
+}
+
 const watchButtons = document.querySelectorAll(".watch-btn");
 
 watchButtons.forEach(btn=>{
@@ -342,13 +349,14 @@ watchButtons.forEach(btn=>{
         if(!src) return;
 
         video.pause();
-        video.muted = false;
-        video.volume = 1;
         video.src = src;
         video.load();
+        enableModalAudio();
 
         modal.style.display="flex";
-        video.play().catch(() => {
+        const playback = video.play();
+        enableModalAudio();
+        playback.catch(() => {
             /* Visible controls allow a retry if a browser blocks playback. */
         });
     });
@@ -365,6 +373,7 @@ document.querySelectorAll(".ads-image video").forEach(preview => {
 });
 
 video.addEventListener("loadedmetadata",()=>{
+    enableModalAudio();
     videoWrapper.classList.toggle(
         "landscape",
         video.videoWidth > video.videoHeight

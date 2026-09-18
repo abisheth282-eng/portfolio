@@ -2809,13 +2809,7 @@ RESPONSIVE
     }
 
     .contact-right{
-        position:absolute;
-        right:0;
-        bottom:0;
-        z-index:11;
-        width:auto;
-        margin:0;
-        display:block;
+        display:none;
     }
 
     .contact-right img{
