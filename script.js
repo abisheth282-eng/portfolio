@@ -80,7 +80,9 @@ NAVBAR SHOW/HIDE + THEME
 const navbar = document.querySelector(".glass-nav");
 const sections = document.querySelectorAll("section");
 
-window.addEventListener("scroll", () => {
+let navbarUpdateQueued = false;
+
+function updateNavbar(){
 
     // Show / Hide navbar
     if(window.scrollY > 80){
@@ -103,7 +105,19 @@ window.addEventListener("scroll", () => {
             }
         }
     });
-});
+}
+
+window.addEventListener("scroll", () => {
+    if(navbarUpdateQueued) return;
+
+    navbarUpdateQueued = true;
+    window.requestAnimationFrame(() => {
+        updateNavbar();
+        navbarUpdateQueued = false;
+    });
+}, { passive:true });
+
+updateNavbar();
 
 /*=========================================
 CONTACT LEFT SCROLL REVEAL
@@ -328,11 +342,25 @@ watchButtons.forEach(btn=>{
         if(!src) return;
 
         video.pause();
+        video.muted = false;
+        video.volume = 1;
         video.src = src;
         video.load();
 
         modal.style.display="flex";
-        video.play();
+        video.play().catch(() => {
+            /* Visible controls allow a retry if a browser blocks playback. */
+        });
+    });
+});
+
+/* Mobile browsers require a user gesture before audio can start. */
+document.querySelectorAll(".ads-image video").forEach(preview => {
+    preview.addEventListener("click", () => {
+        preview.muted = false;
+        preview.volume = 1;
+        preview.controls = true;
+        preview.play().catch(() => {});
     });
 });
 
