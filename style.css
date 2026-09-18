@@ -1144,6 +1144,10 @@ DOTS
 
     inset:0;
 
+    width:100%;
+    min-height:100vh;
+    min-height:100svh;
+
 background:url("images/intro.png") center center/cover no-repeat;
 
     display:flex;
@@ -1190,6 +1194,9 @@ background:url("images/intro.png") center center/cover no-repeat;
 
     text-align:center;
 
+    width:min(100% - 40px, 1100px);
+    padding:24px 0;
+
 }
 
 /* Heading */
@@ -1198,7 +1205,7 @@ background:url("images/intro.png") center center/cover no-repeat;
 
     font-family:"Milker",sans-serif;
 
-    font-size:110px;
+    font-size:clamp(48px, 8vw, 110px);
 
     color:#ffffff;
 
@@ -1218,9 +1225,9 @@ background:url("images/intro.png") center center/cover no-repeat;
 
     margin-top:12px;
 
-    font-size:24px;
+    font-size:clamp(13px, 2vw, 24px);
 
-    letter-spacing:6px;
+    letter-spacing:clamp(2px, .55vw, 6px);
 
     text-transform:uppercase;
 
@@ -1244,6 +1251,30 @@ background:url("images/intro.png") center center/cover no-repeat;
 
     pointer-events:none;
 
+}
+
+/* Keep the opening screen readable and fully viewport-sized on phones. */
+@media (max-width: 600px){
+
+    #intro{
+        min-height:100dvh;
+        background-position:58% center;
+    }
+
+    .intro-content{
+        width:calc(100% - 32px);
+        padding:20px 0;
+    }
+
+    .intro-content h1{
+        line-height:.95;
+        letter-spacing:1px;
+    }
+
+    .intro-content p{
+        margin-top:10px;
+        line-height:1.35;
+    }
 }
 /* ================= SERVICES STRIP ================= */
 
