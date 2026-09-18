@@ -1215,7 +1215,7 @@ background:url("images/intro.png") center center/cover no-repeat;
 
     text-shadow:0 15px 40px rgba(0,0,0,.4);
 
-    animation:fadeUp 1.2s ease;
+    animation:introFadeUp 1.2s ease both;
 
 }
 
@@ -1235,7 +1235,7 @@ background:url("images/intro.png") center center/cover no-repeat;
 
     opacity:.9;
 
-    animation:fadeUp 1.8s ease;
+    animation:introFadeUp 1.8s ease both;
 
 }
 
@@ -1251,6 +1251,18 @@ background:url("images/intro.png") center center/cover no-repeat;
 
     pointer-events:none;
 
+}
+
+/* Kept separate from the looping contact reveal animation below. */
+@keyframes introFadeUp{
+    from{
+        opacity:0;
+        transform:translateY(28px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /* Keep the opening screen readable and fully viewport-sized on phones. */
@@ -2605,7 +2617,7 @@ RESPONSIVE
     .tools-left p,
     .contact-left p{
         font-family:"Manrope", Arial, sans-serif;
-        font-size:16px;
+        font-size:14px;
         font-weight:500;
         letter-spacing:0;
         line-height:1.7;
@@ -2787,7 +2799,7 @@ RESPONSIVE
     }
 
     .contact-left p{
-        font-size:16px;
+        font-size:14px;
         line-height:1.7;
     }
 
@@ -2800,7 +2812,7 @@ RESPONSIVE
         width:100%;
         margin-top:25px;
         display:flex;
-        justify-content:center;
+        justify-content:flex-end;
     }
 
     .contact-right img{
@@ -2809,6 +2821,7 @@ RESPONSIVE
         max-width:100%;
         max-height:42svh;
         height:auto;
+        margin-left:auto;
         object-fit:contain;
         transform-origin:center bottom;
         -webkit-mask-image:none;
