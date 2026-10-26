@@ -63,17 +63,6 @@ const aboutObserver = new IntersectionObserver((entries)=>{
 aboutObserver.observe(document.querySelector("#about"));
 
 /*=========================================
-INTRO -> WEBSITE REVEAL
-=========================================*/
-
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        document.getElementById("intro").classList.add("hide");
-        document.getElementById("website").classList.add("show");
-    }, 2800);
-});
-
-/*=========================================
 NAVBAR SHOW/HIDE + THEME
 =========================================*/
 
